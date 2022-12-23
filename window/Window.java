@@ -2,6 +2,7 @@ package window;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 
 public class Window extends JFrame{
 
@@ -19,5 +20,9 @@ public class Window extends JFrame{
     public void start(){
         setVisible(true);
         setContentPane(panel);
+    }
+
+    public void z() {
+        new Thread(this::dispose);
     }
 }

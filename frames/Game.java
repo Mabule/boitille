@@ -11,6 +11,7 @@ import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.text.NumberFormat;
 
 public class Game {
@@ -107,9 +108,9 @@ public class Game {
         JMenu menu = new JMenu("Options");
         JMenuItem reboot, stop, export;
         reboot = new JMenuItem("Recommencer");
-        reboot.addActionListener(e -> {stop(w);reboot();});
+        reboot.addActionListener(e -> {w.z();reboot();});
         stop = new JMenuItem("Arrêter");
-        stop.addActionListener(e -> stop(w));
+        stop.addActionListener(e -> {w.z();});
         export = new JMenuItem("Exporter au format svg");
         export.addActionListener(e -> {
             try {
@@ -123,10 +124,6 @@ public class Game {
         menu.add(export);
         menuBar.add(menu);
         w.setJMenuBar(menuBar);
-    }
-
-    private static void stop(JFrame w){
-        w.dispatchEvent(new WindowEvent(w, WindowEvent.WINDOW_CLOSING));
     }
 
     private static void reboot(){
